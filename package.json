@@ -1,7 +1,7 @@
 {
-  "name": "react-tutorial",
+  "name": "react-tutorial-websockets",
   "version": "0.0.0",
-  "description": "Code from the React tutorial.",
+  "description": "Code from the React tutorial adapted to use websockets instead of ajax.",
   "main": "server.js",
   "dependencies": {
     "body-parser": "^1.4.3",
@@ -14,7 +14,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/reactjs/react-tutorial.git"
+    "url": "https://github.com/the8thbit/react-tutorial-websockets.git"
   },
   "keywords": [
     "react",
@@ -22,9 +22,9 @@
     "comment",
     "example"
   ],
-  "author": "petehunt",
+  "author": "peter sussman",
   "bugs": {
-    "url": "https://github.com/reactjs/react-tutorial/issues"
+    "url": "https://github.com/the8thbit/react-tutorial-websockets/issues"
   },
-  "homepage": "https://github.com/reactjs/react-tutorial"
+  "homepage": "https://github.com/reactjs/react-tutorial-websockets"
 }
