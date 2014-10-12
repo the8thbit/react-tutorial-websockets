@@ -14,6 +14,7 @@
  */
 
 var converter = new Showdown.converter();
+var socket = io.connect('http://localhost:3000');
 
 var Comment = React.createClass({
   render: function() {
@@ -30,45 +31,24 @@ var Comment = React.createClass({
 });
 
 var CommentBox = React.createClass({
-  loadCommentsFromServer: function() {
-    $.ajax({
-      url: this.props.url,
-      dataType: 'json',
-      success: function(data) {
-        this.setState({data: data});
-      }.bind(this),
-      error: function(xhr, status, err) {
-        console.error(this.props.url, status, err.toString());
-      }.bind(this)
-    });
-  },
   handleCommentSubmit: function(comment) {
     var comments = this.state.data;
     comments.push(comment);
     this.setState({data: comments}, function() {
       // `setState` accepts a callback. To avoid (improbable) race condition,
-      // `we'll send the ajax request right after we optimistically set the new
+      // `we'll emit our event right after we optimistically set the new
       // `state.
-      $.ajax({
-        url: this.props.url,
-        dataType: 'json',
-        type: 'POST',
-        data: comment,
-        success: function(data) {
-          this.setState({data: data});
-        }.bind(this),
-        error: function(xhr, status, err) {
-          console.error(this.props.url, status, err.toString());
-        }.bind(this)
-      });
+      socket.emit('post', comment);
     });
   },
   getInitialState: function() {
     return {data: []};
   },
   componentDidMount: function() {
-    this.loadCommentsFromServer();
-    setInterval(this.loadCommentsFromServer, this.props.pollInterval);
+    var that = this;
+    socket.on('load posts', function(comments) {
+      that.setState({data: JSON.parse(comments)});
+    });
   },
   render: function() {
     return (
@@ -126,6 +106,6 @@ var CommentForm = React.createClass({
 });
 
 React.renderComponent(
-  <CommentBox url="comments.json" pollInterval={2000} />,
+  <CommentBox />,
   document.getElementById('content')
 );
