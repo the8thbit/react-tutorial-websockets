@@ -1,27 +1,14 @@
 # React Tutorial
 
-This is the React comment box example from [the React tutorial](http://facebook.github.io/react/docs/tutorial.html).
+This is the React comment box example from [the React tutorial](http://facebook.github.io/react/docs/tutorial.html) adapted to use websockets (with flashsocket and xhr polling fallback) through socket.io instead of ajax polling. This is less code, less expensive, and more secure.
 
 ## To use
 
-There are several simple server implementations included. They all serve static files from `public/` and handle requests to `comments.json` to fetch or add data. Start a server with one of the following:
-
-### Node
+The ajax version of this repository includes three different servers. Here, I only provide a websockets implementation of the node server. It serves static files from `public/` and fetches/adds data through socket.io events. Start a server with:
 
 ```sh
 npm install
 node server.js
-```
-
-### Python
-
-```sh
-python server.py
-```
-
-### Ruby
-```sh
-ruby server.rb
 ```
 
 And visit <http://localhost:3000/>. Try opening multiple tabs!
