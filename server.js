@@ -1,7 +1,7 @@
 /**
  * This file is modified from a file provided by Facebook for non-commercial testing and evaluation purposes only.
  * Facebook reserves all rights of the upstream file not expressly granted. because of that, I don't know where 
- * my version stands lol.'
+ * my version stands lol.
  *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
